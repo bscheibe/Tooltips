@@ -4,7 +4,6 @@
 
 
 let g:tooltips=1
-set balloondelay=300 " Default to 300ms
 
 
 " Command.
@@ -13,6 +12,7 @@ ab tooltipdelay call SetTooltipDelay()
 
 
 if has("gui_running")
+        set balloondelay=300 " Default to 300ms
         amenu Plugins.Tooltips.Toggle\ Tooltips : call ToggleTooltips()<CR>
         amenu Plugins.Tooltips.Tooltip\ Delay : call SetTooltipDelay()<CR>
 endif
@@ -35,7 +35,9 @@ endfunction
         
   
 " Initialize
-call ToggleTooltips()
+if has("gui_running")
+        call ToggleTooltips()
+endif
 
 
 function! BinaryTagSearch()
