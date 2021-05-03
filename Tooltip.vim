@@ -27,3 +27,9 @@ function! ToggleTooltips()
         set ballooneval " Toggles.
         let g:tooltips=!g:tooltips
                 
+
+function! SetTooltipDelay()
+        let &balloondelay=str2nr(input('Enter a new tooltip delay (milliseconds): ')
+endfunction
+        
+  
