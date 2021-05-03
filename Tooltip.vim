@@ -41,9 +41,13 @@ endif
 
 
 function! BinaryTagSearch()
-        for file in split(g:tags, " ")
+        for file in split(&tags, ",")
+                try
+                        let lines=readfile(file)
+                catch
+                        continue
+                endtry
                 echo "Scanning ".split(file, "/")[-1]."..."
-                let lines=readfile(file)
                 let result=s:BinarySearch(lines)
                 if ""!=result
                         echo ""
