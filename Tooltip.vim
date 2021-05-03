@@ -58,7 +58,7 @@ function! s:BinarySearch(lines)
         let high=len(a:lines)-1
         while low <= high
                 let pos=(low+high)/2
-                let cur_word=split(a:lines[pos], "      ")[0] " This should be a tab character. ^l
+                let cur_word=split(a:lines[pos], "\t")[0]
                 if v:beval_text ==# cur_word
                         return s:FormatHelper(a:lines[pos])
                 else
@@ -70,6 +70,6 @@ endfunction
 
 
 function! s:FormatHelper(word_list)
-        let words=split(a:words_list, " ") " Meant to be tab-separated. ^l
+        let words=split(a:words_list, "\t")
         return v:beval_text."\nFile: ".words[1]."\nContext: ".words[-1]
 endfunction
